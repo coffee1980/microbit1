@@ -1,13 +1,16 @@
-input.onButtonPressed(Button.A, function () {
-    basic.showLeds(`
-        # # # . #
-        # # # . .
-        # # # . .
-        . . . # #
-        # . . # #
-        `)
+function doInit () {
     music.setVolume(23)
     music.setTempo(70)
+}
+input.onButtonPressed(Button.A, function () {
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        . # . # .
+        . # # # .
+        # . . . #
+        `)
+    doInit()
     music.playTone(523, music.beat(BeatFraction.Quarter))
     music.playTone(494, music.beat(BeatFraction.Quarter))
     music.playTone(523, music.beat(BeatFraction.Whole))
@@ -32,6 +35,64 @@ input.onButtonPressed(Button.A, function () {
     music.playTone(440, music.beat(BeatFraction.Whole))
     music.playTone(659, music.beat(BeatFraction.Whole))
 })
+function doSound_B2 () {
+    music.rest(music.beat(BeatFraction.Whole))
+    music.playTone(440, music.beat(BeatFraction.Whole))
+    music.playTone(415, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(494, music.beat(BeatFraction.Half))
+    music.playTone(330, music.beat(BeatFraction.Half))
+    music.playTone(659, music.beat(BeatFraction.Breve))
+    music.rest(music.beat(BeatFraction.Whole))
+}
 input.onGesture(Gesture.Shake, function () {
     basic.showIcon(IconNames.Heart)
 })
+input.onButtonPressed(Button.B, function () {
+    doInit()
+    doSound_B1()
+    music.playTone(523, music.beat(BeatFraction.Double))
+    music.rest(music.beat(BeatFraction.Quarter))
+    doSound_B2()
+    doSound_B1()
+    music.playTone(523, music.beat(BeatFraction.Whole))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.rest(music.beat(BeatFraction.Half))
+    doSound_B3()
+})
+function doSound_B3 () {
+    music.playTone(523, music.beat(BeatFraction.Quarter))
+    music.playTone(587, music.beat(BeatFraction.Quarter))
+    music.playTone(659, music.beat(BeatFraction.Whole))
+    music.rest(music.beat(BeatFraction.Half))
+    music.playTone(523, music.beat(BeatFraction.Quarter))
+    music.playTone(587, music.beat(BeatFraction.Quarter))
+    music.playTone(659, music.beat(BeatFraction.Whole))
+    music.rest(music.beat(BeatFraction.Half))
+    music.playTone(523, music.beat(BeatFraction.Quarter))
+    music.playTone(587, music.beat(BeatFraction.Quarter))
+    music.playTone(659, music.beat(BeatFraction.Double))
+    music.rest(music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(494, music.beat(BeatFraction.Half))
+    music.playTone(523, music.beat(BeatFraction.Half))
+    music.playTone(659, music.beat(BeatFraction.Double))
+    music.rest(music.beat(BeatFraction.Whole))
+    music.rest(music.beat(BeatFraction.Half))
+    music.playTone(698, music.beat(BeatFraction.Quarter))
+    music.playTone(587, music.beat(BeatFraction.Double))
+    music.rest(music.beat(BeatFraction.Quarter))
+    music.rest(music.beat(BeatFraction.Whole))
+}
+function doSound_B1 () {
+    music.playTone(440, music.beat(BeatFraction.Whole))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(440, music.beat(BeatFraction.Half))
+    music.playTone(523, music.beat(BeatFraction.Half))
+    music.playTone(587, music.beat(BeatFraction.Half))
+    music.playTone(392, music.beat(BeatFraction.Whole))
+    music.rest(music.beat(BeatFraction.Half))
+    music.playTone(587, music.beat(BeatFraction.Quarter))
+}
+basic.showString("Hello!")
+basic.showArrow(ArrowNames.NorthEast)
